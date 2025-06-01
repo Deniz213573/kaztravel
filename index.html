@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Kazakhstan Travel Page</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="icon" type="image/png" href="https://logo.com/image-cdn/images/kts928pd/production/585a3847b7b59524cb5d2139c8a71c2e57975d60-327x329.png?w=1080&q=72&fm=webp">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init({ once: false, duration: 800 });
+    });
+  </script>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background-color: #f6fcf1;
+      scroll-behavior: smooth;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #ccc;
+      background-color: white;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+    }
+
+    .navbar .left,
+    .navbar .right {
+      display: flex;
+      gap: 30px;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: black;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .navbar .center {
+      font-size: 22px;
+      font-weight: bold;
+      color: #3b8b3b;
+      cursor: default;
+    }
+
+    /* Отступ сверху для контента из-за фиксированной навигации */
+    body > *:not(.navbar) {
+      padding-top: 80px;
+    }
+
+    .hero {
+      background: url('https://cs13.pikabu.ru/post_img/big/2021/03/11/7/161545763317621092.jpg') no-repeat center center/cover;
+      height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      position: relative;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.4);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 20px;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 20px;
+    }
+
+    .content h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+
+    .content p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      background-color: #3b8b3b;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #2f6e2f;
+    }
+
+    .hero-container {
+      width: 95%;
+      height: 95%;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 0 auto;
+    }
+
+    .travel-section {
+      padding: 80px 20px;
+      background-color: #fff;
+      display: flex;
+      justify-content: center;
+    }
+
+    .travel-container {
+      display: flex;
+      max-width: 1200px;
+      background-color: #f7fbf5;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .travel-text {
+      flex: 1;
+      padding: 50px;
+    }
+
+    .travel-text h2 {
+      font-size: 32px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      line-height: 1.4;
+    }
+
+    .divider {
+      width: 40px;
+      height: 3px;
+      background-color: #6aa84f;
+      margin-bottom: 20px;
+    }
+
+    .travel-text p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #333;
+    }
+
+    .travel-image {
+      flex: 1;
+    }
+
+    .travel-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-top-right-radius: 20px;
+      border-bottom-right-radius: 20px;
+    }
+
+    h1.section-title {
+      margin-top: 80px;
+      text-align: center;
+      font-size: 2.5em;
+      color: #3d7b3f;
+    }
+
+    p.subtitle {
+      font-size: 1.2em;
+      margin-bottom: 40px;
+      color: #333;
+      text-align: center;
+    }
+
+    .regions {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px 40px;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: white;
+      border-radius: 15px;
+      overflow: hidden;
+      width: 300px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      font-size: 1.1em;
+      margin: 15px 0 10px;
+      text-align: center;
+    }
+
+    .card p {
+      font-size: 0.95em;
+      color: #555;
+      padding: 0 15px 20px;
+      text-align: center;
+    }
+
+    .section {
+      text-align: center;
+      padding: 60px 40px;
+    }
+
+    .section h2 {
+      font-size: 2em;
+      color: #3d7b3f;
+      margin-bottom: 15px;
+    }
+
+    .section p {
+      font-size: 1em;
+      color: #444;
+      margin-bottom: 40px;
+    }
+
+    .tours {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* Слайдер отзывов */
+    .testimonials {
+      background-color: #f5f5f5;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .testimonials h2 {
+      font-size: 2.5rem;
+      margin-bottom: 30px;
+    }
+
+    .testimonial-slider {
+      position: relative;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .slides {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      display: none;
+      padding: 20px;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    .slide.active {
+      display: block;
+    }
+
+    .slide p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    .slide h4 {
+      margin-top: 15px;
+      font-weight: bold;
+    }
+
+    .testimonials {
+  background-color: #e6f0d9; /* светло-зелёный фон */
+  padding: 60px 20px;
+  text-align: center;
+  border-radius: 20px;
+  max-width: 800px;
+  margin: 60px auto 80px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  font-family: 'Arial', sans-serif;
+  color: #2d4a1f;
+}
+
+.testimonials h2 {
+  font-size: 2.8rem;
+  margin-bottom: 40px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-slider {
+  position: relative;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.slides {
+  position: relative;
+  overflow: hidden;
+  min-height: 180px;
+}
+
+.slide {
+  display: none;
+  background-color: #f9fff6;
+  padding: 35px 40px;
+  border-radius: 18px;
+  box-shadow: 0 10px 20px rgba(75, 139, 59, 0.25);
+  color: #3b5821;
+  font-size: 1.25rem;
+  line-height: 1.8;
+  font-style: italic;
+  transition: opacity 0.6s ease-in-out;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+
+.slide.active {
+  display: block;
+  position: relative;
+  opacity: 1;
+}
+
+.slide h4 {
+  margin-top: 20px;
+  font-weight: 700;
+  font-style: normal;
+  font-size: 1.1rem;
+  color: #2f4b16;
+  text-align: right;
+  letter-spacing: 0.05em;
+}
+
+/* Кнопки управления */
+
+.testimonial-controls {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.testimonial-controls button {
+  background-color: #4b8b3b;
+  color: #f9fff6;
+  border: none;
+  padding: 14px 22px;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 6px 15px rgba(75, 139, 59, 0.5);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  user-select: none;
+}
+
+.testimonial-controls button:hover {
+  background-color: #3a6a28;
+  transform: scale(1.15);
+  box-shadow: 0 8px 20px rgba(58, 106, 40, 0.7);
+}
+
+.testimonial-controls button:focus {
+  outline: 2px solid #a2c57c;
+  outline-offset: 3px;
+}
+
+
+    .contact-section {
+      background-color: #f6fcf1;
+      padding: 80px 20px;
+      text-align: center;
+      border-top: 1px solid #d4e5cc;
+    }
+
+    .contact-section h2 {
+      font-size: 2.5rem;
+      color: #3b8b3b;
+      margin-bottom: 10px;
+    }
+
+    .contact-subtitle {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 40px;
+    }
+
+    .contact-wrapper {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      background-color: #ffffff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .contact-details {
+      flex: 1;
+      min-width: 250px;
+      font-size: 1rem;
+      color: #333;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    .contact-form {
+      flex: 1;
+      min-width: 250px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      padding: 14px 18px;
+      border-radius: 12px;
+      border: 1px solid #b7d8ad;
+      background-color: #f9fff6;
+      font-size: 1rem;
+      color: #333;
+      outline: none;
+    }
+
+    .contact-form input::placeholder,
+    .contact-form textarea::placeholder {
+      color: #888;
+    }
+
+    .contact-form button {
+      padding: 15px;
+      background-color: #3b8b3b;
+      color: white;
+      border: none;
+      font-size: 1rem;
+      font-weight: bold;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .contact-form button:hover {
+      background-color: #2e6c2e;
+    }
+
+    .footer {
+      background-color: #eaf4e5;
+      text-align: center;
+      padding: 30px 20px;
+      font-size: 0.95rem;
+      color: #555;
+      border-top: 1px solid #cde2c4;
+    }
+
+    .footer p {
+      margin: 5px 0;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Навигация -->
+  <nav class="navbar" data-aos="fade-down">
+    <div class="left">
+      <a href="#tours-section">Туры по Казахстану</a>
+      <a href="#regions-section">Достопримечательности</a>
+      <a href="#travel-section">Природа</a>
+    </div>
+    <div class="center">Kazakhstan Travel Page</div>
+    <div class="right">
+      <a href="#tips-section">Советы</a>
+      <a href="#contact-section">Контакты</a>
+      <a href="#testimonials-section">Отзывы</a>
+    </div>
+  </nav>
+
+  <!-- Главный экран -->
+  <section class="hero" data-aos="fade-up">
+    <div class="hero-container">
+      <div class="overlay"></div>
+      <div class="content">
+        <h1>Добро пожаловать в Казахстан</h1>
+        <p>Откройте для себя незабываемые путешествия по красивейшим местам Казахстана.</p>
+        <button class="btn">Начать путешествие</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Природа и туризм -->
+  <section id="travel-section" class="travel-section" data-aos="fade-up">
+    <div class="travel-container">
+      <div class="travel-text">
+        <h2>Путешествие по природным красотам Казахстана</h2>
+        <div class="divider"></div>
+        <p>
+          Казахстан – страна с уникальными ландшафтами: горы, степи, озёра и пустыни. Путешествуйте с нами, чтобы увидеть лучшие природные уголки.
+        </p>
+      </div>
+      <div class="travel-image">
+        <img src="https://cs13.pikabu.ru/post_img/big/2021/03/11/7/161545763317621092.jpg" alt="Природа Казахстана">
+      </div>
+    </div>
+  </section>
+
+  <!-- Путешествие по Казахстану -->
+  <h1 id="regions-section" class="section-title" data-aos="fade-up">Путешествие по Казахстану</h1>
+  <p class="subtitle" data-aos="fade-up">Изучите регионы, маршруты и достопримечательности страны</p>
+
+  <section class="regions" data-aos="fade-up">
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2c/Kolsay_Lake.jpeg/960px-Kolsay_Lake.jpeg" alt="Каньон Чарын">
+      <h3>Алматинская область: горы и озера</h3>
+      <p>Познакомьтесь с живописными горными пейзажами и чистейшими озерами региона.</p>
+    </div>
+    <div class="card">
+      <img src="https://qazaqgeography.kz/assets/media/oblast-turkestanskaya/6332b0f087c40999952278.jpg" alt="Горы Заилийского Алатау">
+      <h3>Туркестанская область: история и культура</h3>
+      <p>Посетите древние города и архитектурные памятники великого прошлого.</p>
+    </div>
+    <div class="card">
+      <img src="https://www.gov.kz/uploads/2023/3/14/3cadd6082ea7b93242fa0fa51a189d03_original.245412.jpg" alt="Астана">
+      <h3>Акмолинская область: степные просторы</h3>
+      <p>Исследуйте бескрайние степи и природные заповедники с дикой природой.</p>
+    </div>
+  </section>
+
+  <!-- Туры -->
+  <section id="tours-section" class="section" data-aos="fade-up">
+    <h2>Наши туры по Казахстану</h2>
+    <p>Выберите тур и отправляйтесь в незабываемое путешествие с комфортом.</p>
+    <div class="tours">
+      <div class="card">
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/18/12/16/d4/caption.jpg?w=1400&h=1400&s=1" alt="Тур в Кольсайские озера">
+        <h3>Тур по Алтаю</h3>
+        <p>Горы, озёра и природа Алтая — идеальное приключение</p>
+      </div>
+      <div class="card">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c2/%D0%9C%D0%B0%D1%83%D0%B7%D0%BE%D0%BB%D0%B5%D1%98_%D0%A5%D0%BE%D0%B4%D0%B6%D0%B5_%D0%90%D1%85%D0%BC%D0%B5%D0%B4%D0%B0_%D0%88%D0%B0%D1%81%D0%B0%D0%B2%D0%B8%D1%98%D0%B0_%28%D0%B3%D1%80%D0%B0%D0%B4_%D0%A2%D1%83%D1%80%D0%BA%D0%B5%D1%81%D1%82%D0%B0%D0%BD%2C_%D0%9A%D0%B0%D0%B7%D0%B0%D1%85%D1%81%D1%82%D0%B0%D0%BD%29.jpg" alt="Тур по пустыне">
+        <h3>Экскурсия в Туркестан</h3>
+        <p>Исторические памятники и культурное наследие региона.</p>
+      </div>
+      <div class="card">
+        <img src="https://uzbekistan.travel/storage/app/media/Rasmlar/Navoiy/cropped-images/40jpg-0-0-0-0-1738154749.jpg" alt="Тур в Бурабай">
+        <h3>Пустыня Кызылкум</h3>
+        <p>Удивительные ландшафты, флора и фауна пустыни.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Советы -->
+  <section id="tips-section" class="section" data-aos="fade-up">
+    <h2>Полезные советы путешественникам</h2>
+    <p>Лучшие рекомендации для комфортного и безопасного путешествия по Казахстану.</p>
+    <ul style="max-width: 700px; margin: 0 auto; list-style-type: disc; padding-left: 20px; color: #3b8b3b; font-weight: 600;">
+      <li>Берите с собой удобную обувь для длительных прогулок и походов.</li>
+      <li>Следите за погодой и одевайтесь по сезону — климат может быстро меняться.</li>
+      <li>Всегда имейте при себе воду и легкие перекусы в отдалённых местах.</li>
+      <li>Уважайте культуру и традиции местных жителей.</li>
+      <li>Не забывайте про защиту от солнца — крем, головной убор и очки.</li>
+    </ul>
+  </section>
+
+  <!-- Отзывы клиентов -->
+  <section id="testimonials-section" class="testimonials" data-aos="fade-up">
+    <h2>Отзывы наших клиентов</h2>
+    <div class="testimonial-slider">
+      <div class="slides">
+        <div class="slide active">
+          <p>"Путешествие по Казахстану с этим сайтом было просто невероятным! Все организовано отлично."</p>
+          <h4>Айгерим</h4>
+        </div>
+        <div class="slide">
+          <p>"Очень понравились туры и поддержка команды. Рекомендую всем, кто хочет открыть Казахстан."</p>
+          <h4>Марат</h4>
+        </div>
+        <div class="slide">
+          <p>"Спасибо за возможность увидеть такие красивые места и познакомиться с культурой страны."</p>
+          <h4>Жанна</h4>
+        </div>
+      </div>
+      <div class="testimonial-controls">
+        <button onclick="prevSlide()" aria-label="Предыдущий отзыв">‹</button>
+        <button onclick="nextSlide()" aria-label="Следующий отзыв">›</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contact-section" class="contact-section" data-aos="fade-up">
+    <h2>Свяжитесь с нами</h2>
+    <p class="contact-subtitle">Заполните форму, чтобы узнать подробнее о турах и условиях путешествия.</p>
+    <div class="contact-wrapper">
+      <div class="contact-details">
+        <p><strong>Телефон:</strong> +7 (777) 123-45-67</p>
+        <p><strong>Email:</strong> info@kaztravel.kz</p>
+        <p><strong>Адрес:</strong> г. Алматы, пр. Достык, 100</p>
+      </div>
+      <form class="contact-form" novalidate>
+        <input type="email" placeholder="Ваш email" required>
+        <input type="text" placeholder="Ваше имя" required>
+        <textarea rows="5" placeholder="Ваши вопросы или пожелания" required></textarea>
+        <button type="submit">Отправить</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Подвал -->
+  <footer class="footer">
+    <p>© 2025 Kazakhstan Travel Page. Все права защищены.</p>
+    <p>Разработано для вдохновения путешествий по Казахстану.</p>
+  </footer>
+
+  <script>
+    // Навигация и кнопка "Начать путешествие"
+    document.addEventListener('DOMContentLoaded', () => {
+      // Плавный скролл навигационных ссылок
+      const navLinks = document.querySelectorAll('.navbar a');
+      navLinks.forEach(link => {
+        link.addEventListener('click', e => {
+          e.preventDefault();
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+              target.scrollIntoView({ behavior: 'smooth' });
+            }
+          }
+        });
+      });
+
+      // Кнопка "Начать путешествие" скроллит к секции туров
+      const startBtn = document.querySelector('.btn');
+      const toursSection = document.getElementById('tours-section');
+      if (startBtn && toursSection) {
+        startBtn.addEventListener('click', () => {
+          toursSection.scrollIntoView({ behavior: 'smooth' });
+        });
+      }
+
+      // Обработка формы контактов
+      const contactForm = document.querySelector('.contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', e => {
+          e.preventDefault();
+          const email = contactForm.querySelector('input[type="email"]').value.trim();
+          const name = contactForm.querySelector('input[type="text"]').value.trim();
+          const comments = contactForm.querySelector('textarea').value.trim();
+
+          if (!email || !name || !comments) {
+            alert('Пожалуйста, заполните все поля.');
+            return;
+          }
+
+          alert(`Спасибо, ${name}! Ваш запрос отправлен.`);
+          contactForm.reset();
+        });
+      }
+    });
+
+    // Слайдер отзывов
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(currentSlide);
+    }
+
+    // Автоматическая смена слайдов каждые 6 секунд
+    setInterval(nextSlide, 6000);
+  </script>
+</body>
+</html>
